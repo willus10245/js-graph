@@ -1,0 +1,70 @@
+{
+  "name": "js-graph",
+  "version": "0.0.0",
+  "description": "Apprenticeship graph implementation",
+  "author": "Scott Wiggins",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "babel-jest": "^23.0.0-alpha.0",
+    "babel-plugin-transform-builtin-extend": "^1.1.2",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.8.2",
+    "jest": "^23.0.0-alpha.0"
+  },
+  "jest": {
+    "modulePathIgnorePatterns": [
+      "package.json"
+    ]
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "node": "current"
+        }
+      ]
+    ],
+    "plugins": [
+      [
+        "babel-plugin-transform-builtin-extend",
+        {
+          "globals": [
+            "Error"
+          ]
+        }
+      ],
+      [
+        "transform-regenerator"
+      ]
+    ]
+  },
+  "scripts": {
+    "test": "jest ./*",
+    "watch": "jest --watch ./*",
+    "lint": "eslint .",
+    "lint-test": "eslint . && jest ./* "
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module"
+    },
+    "env": {
+      "es6": true,
+      "node": true,
+      "jest": true
+    },
+    "extends": "airbnb",
+    "rules": {
+      "import/no-unresolved": "off",
+      "import/extensions": "off",
+      "no-plusplus": "off"
+    }
+  }
+}
