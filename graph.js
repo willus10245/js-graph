@@ -54,25 +54,25 @@ const Graph = () => {
 
   const dfs = (start, destination) => {
     const visited = Array(V.length).fill(false);
-    const resultRoute = [];
 
     const executeDFSearch = (startIndex, destinationIndex) => {
-      resultRoute.push(V[startIndex]);
       visited[startIndex] = true;
       if (adj[startIndex].includes(destinationIndex)) {
-        resultRoute.push(V[destinationIndex]);
-      } else {
-        adj[startIndex].forEach((neighborIndex) => {
-          if (!visited[neighborIndex]) {
-            executeDFSearch(neighborIndex, destinationIndex);
-          }
-        });
+        return [V[startIndex], V[destinationIndex]];
       }
+
+      let resultRoute = [];
+
+      adj[startIndex].forEach((neighborIndex) => {
+        if (!visited[neighborIndex]) {
+          resultRoute = [V[startIndex]].concat(executeDFSearch(neighborIndex, destinationIndex));
+        }
+      });
+
+      return resultRoute;
     };
 
-    executeDFSearch(V.indexOf(start), V.indexOf(destination));
-
-    return resultRoute;
+    return executeDFSearch(V.indexOf(start), V.indexOf(destination));
   };
 
   return {

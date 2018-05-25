@@ -38,7 +38,8 @@ describe('the graph function', () => {
   });
 
   it('executes DFS', () => {
+    expect(graph.dfs('Chicago', 'Denver')).toEqual(['Chicago', 'Denver']);
     expect(graph.dfs('Seattle', 'Boston'))
-      .toBe(['Seattle', 'Denver', 'Chicago', 'Detroit', 'Boston']);
+      .toEqual(['Seattle', 'Denver', 'Chicago', 'Atlanta', 'Boston']);
   });
 });
