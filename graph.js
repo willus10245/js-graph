@@ -28,28 +28,38 @@ const Graph = () => {
     adj[indexOfSecond].push(indexOfFirst);
   };
 
-  const bfs = (searchInput) => {
-    const visited = Array(V.length).fill(false);
-    const firstSearchIndex = 0;
-    const searchQueue = [firstSearchIndex]; // Step 1
-    let isFound = false;
+  const bfs = (start, destination) => {
+    const visited = [];
+    const parents = [];
+    let resultRoute = [];
+    const firstSearchIndex = V.indexOf(start);
+    const searchQueue = [firstSearchIndex];
+    parents[firstSearchIndex] = null;
 
-    const executeBFSearch = (adjIndex) => {
-      if (V[adjIndex] === searchInput) {
-        isFound = true;
-        return;
+    const generateRoute = (childIndex) => {
+      if (parents[childIndex]) {
+        return [V[childIndex]].concat(generateRoute(parents[childIndex]));
       }
-      visited[adjIndex] = true; // Step 2
-      const unvisitedNeighbors = adj[adjIndex].filter(i => !visited[i]); // Step 3
-      searchQueue.push(...unvisitedNeighbors); // Step 4
-      searchQueue.shift(); // Step 5
-      if (searchQueue.length === 0) return;
-      executeBFSearch(searchQueue[0]);
     };
 
-    executeBFSearch(firstSearchIndex);
+    while (searchQueue.length > 0) {
+      const currentIndex = searchQueue.shift();
+      visited[currentIndex] = true;
+      adj[currentIndex].forEach((neighbor) => {
+        if (!parents[neighbor]) {
+          parents[neighbor] = currentIndex;
+        }
+        if (!searchQueue.includes(neighbor) && !visited.includes(neighbor)) {
+          searchQueue.push(neighbor);
+        }
+      });
+      if (V[currentIndex] === destination) {
+        resultRoute = generateRoute(currentIndex);
+        break;
+      }
+    }
 
-    return isFound;
+    return resultRoute;
   };
 
   const dfs = (start, destination) => {
