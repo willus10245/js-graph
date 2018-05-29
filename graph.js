@@ -30,15 +30,18 @@ const Graph = () => {
 
   const bfs = (start, destination) => {
     const visited = [];
-    const parents = [];
+    const parentOf = [];
     let resultRoute = [];
     const firstSearchIndex = V.indexOf(start);
     const searchQueue = [firstSearchIndex];
-    parents[firstSearchIndex] = null;
+    parentOf[firstSearchIndex] = null;
 
     const generateRoute = (childIndex) => {
-      if (parents[childIndex]) {
-        return [V[childIndex]].concat(generateRoute(parents[childIndex]));
+      if (parentOf[childIndex] === null) {
+        return [V[childIndex]];
+      }
+      if (parentOf[childIndex] !== null) {
+        return [V[childIndex]].concat(generateRoute(parentOf[childIndex]));
       }
     };
 
@@ -46,8 +49,8 @@ const Graph = () => {
       const currentIndex = searchQueue.shift();
       visited[currentIndex] = true;
       adj[currentIndex].forEach((neighbor) => {
-        if (!parents[neighbor]) {
-          parents[neighbor] = currentIndex;
+        if (parentOf[neighbor] === undefined) {
+          parentOf[neighbor] = currentIndex;
         }
         if (!searchQueue.includes(neighbor) && !visited.includes(neighbor)) {
           searchQueue.push(neighbor);
@@ -59,7 +62,7 @@ const Graph = () => {
       }
     }
 
-    return resultRoute;
+    return resultRoute.reverse();
   };
 
   const dfs = (start, destination) => {

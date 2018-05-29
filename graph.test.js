@@ -29,13 +29,12 @@ describe('the graph function', () => {
   it('executes BFS', () => {
     expect(graph.bfs('Seattle', 'Chicago'))
       .toEqual(['Seattle', 'Denver', 'Chicago']);
-    // expect(graph.bfs('Denver')).toBe(true);
-    // expect(graph.bfs('Chicago')).toBe(true);
-    // expect(graph.bfs('Detroit')).toBe(true);
-    // expect(graph.bfs('Minneapolis')).toBe(true);
-    // expect(graph.bfs('Boston')).toBe(true);
-    // expect(graph.bfs('Atlanta')).toBe(true);
-    // expect(graph.bfs('Cincinnati')).toBe(false);
+    expect(graph.bfs('Seattle', 'Boston'))
+      .toEqual(['Seattle', 'Denver', 'Chicago', 'Detroit', 'Boston']);
+    expect(graph.bfs('Chicago', 'Minneapolis'))
+      .toEqual(['Chicago', 'Detroit', 'Minneapolis']);
+    expect(graph.bfs('Atlanta', 'Denver'))
+      .toEqual(['Atlanta', 'Chicago', 'Denver']);
   });
 
   it('executes DFS', () => {
