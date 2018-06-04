@@ -29,4 +29,4 @@ export const Set = () => {
   };
 };
 
-export const union = (set1, set2) => set1.filter(element => set2.includes(element));
+export const intersection = (set1, set2) => set1.filter(element => set2.includes(element));

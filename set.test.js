@@ -1,6 +1,6 @@
 import {
   Set,
-  union,
+  intersection,
 } from './set';
 
 describe('the set function', () => {
@@ -51,7 +51,7 @@ describe('multiset functions', () => {
   set2.add('y');
   set2.add('z');
 
-  it('union functions', () => {
-    expect(union(set1.values, set2.values)).toEqual([1, 2, 3]);
+  it('intersection functions', () => {
+    expect(intersection(set1.values, set2.values)).toEqual([1, 2, 3]);
   });
 });
