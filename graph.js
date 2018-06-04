@@ -89,8 +89,6 @@ const Graph = () => {
   };
 
   return {
-    V,
-    adj,
     addVertex,
     addVerticies,
     addEdge,
