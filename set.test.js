@@ -1,4 +1,9 @@
-import { Set, findUnion, findIntersection } from './set';
+import {
+  Set,
+  findUnion,
+  findIntersection,
+  findRelativeComplement,
+} from './set';
 
 describe('the set function', () => {
   const set = Set();
@@ -55,5 +60,10 @@ describe('multiset functions', () => {
 
   it('findIntersection functions', () => {
     expect(findIntersection(set1.values, set2.values)).toEqual([1, 2, 3]);
+  });
+
+  it('findRelativeComplement functions', () => {
+    expect(findRelativeComplement(set1.values, set2.values)).toEqual(['a', 'b', 'c']);
+    expect(findRelativeComplement(set2.values, set1.values)).toEqual(['x', 'y', 'z']);
   });
 });

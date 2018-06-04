@@ -41,3 +41,6 @@ export const findUnion = (set1, set2) => {
 };
 
 export const findIntersection = (set1, set2) => set1.filter(element => set2.includes(element));
+
+export const findRelativeComplement = (set1, set2) =>
+  set1.filter(element => !set2.includes(element));

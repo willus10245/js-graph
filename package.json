@@ -65,7 +65,8 @@
       "import/no-unresolved": "off",
       "import/extensions": "off",
       "no-plusplus": "off",
-      "consistent-return": "off"
+      "consistent-return": "off",
+      "eol-last": "off"
     }
   }
 }
