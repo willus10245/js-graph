@@ -29,22 +29,15 @@ export const Set = () => {
   };
 };
 
-export const multisetFunctions = () => {
-  const union = (set1, set2) => {
-    const unionSet = set1.reduce((acc, element) => acc.concat(element), []);
-    set2.forEach((element) => {
-      if (!unionSet.includes(element)) {
-        unionSet.push(element);
-      }
-    });
+export const findUnion = (set1, set2) => {
+  const unionSet = set1.reduce((acc, element) => acc.concat(element), []);
+  set2.forEach((element) => {
+    if (!unionSet.includes(element)) {
+      unionSet.push(element);
+    }
+  });
 
-    return unionSet;
-  };
-
-  const intersection = (set1, set2) => set1.filter(element => set2.includes(element));
-
-  return {
-    union,
-    intersection,
-  };
+  return unionSet;
 };
+
+export const findIntersection = (set1, set2) => set1.filter(element => set2.includes(element));
