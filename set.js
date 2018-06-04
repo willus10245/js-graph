@@ -1,5 +1,6 @@
 export const Set = () => {
   const values = [];
+
   const add = (value) => {
     if (values.includes(value)) {
       throw new Error('that value is already in the set!');
@@ -21,10 +22,11 @@ export const Set = () => {
   };
 
   return {
+    values,
     add,
     has,
     remove,
   };
 };
 
-export const union = () => {};
+export const union = (set1, set2) => set1.filter(element => set2.includes(element));

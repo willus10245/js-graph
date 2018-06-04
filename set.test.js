@@ -1,4 +1,7 @@
-import { Set } from './set';
+import {
+  Set,
+  union,
+} from './set';
 
 describe('the set function', () => {
   const set = Set();
@@ -28,5 +31,27 @@ describe('the set function', () => {
       set.remove(false);
     };
     expect(removeNonexistant).toThrow('that value is not in the set!');
+  });
+});
+
+describe('multiset functions', () => {
+  const set1 = Set();
+  set1.add(1);
+  set1.add(2);
+  set1.add(3);
+  set1.add('a');
+  set1.add('b');
+  set1.add('c');
+
+  const set2 = Set();
+  set2.add(1);
+  set2.add(2);
+  set2.add(3);
+  set2.add('x');
+  set2.add('y');
+  set2.add('z');
+
+  it('union functions', () => {
+    expect(union(set1.values, set2.values)).toEqual([1, 2, 3]);
   });
 });
