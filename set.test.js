@@ -3,6 +3,7 @@ import {
   findUnion,
   findIntersection,
   findRelativeComplement,
+  findSymmetricDifference,
 } from './set';
 
 describe('the set function', () => {
@@ -65,5 +66,9 @@ describe('multiset functions', () => {
   it('findRelativeComplement functions', () => {
     expect(findRelativeComplement(set1.values, set2.values)).toEqual(['a', 'b', 'c']);
     expect(findRelativeComplement(set2.values, set1.values)).toEqual(['x', 'y', 'z']);
+  });
+
+  it('findSymmetricDifference functions', () => {
+    expect(findSymmetricDifference(set1.values, set2.values)).toEqual(['a', 'b', 'c', 'x', 'y', 'z']);
   });
 });

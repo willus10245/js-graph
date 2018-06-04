@@ -44,3 +44,6 @@ export const findIntersection = (set1, set2) => set1.filter(element => set2.incl
 
 export const findRelativeComplement = (set1, set2) =>
   set1.filter(element => !set2.includes(element));
+
+export const findSymmetricDifference = (set1, set2) =>
+  findRelativeComplement(set1, set2).concat(findRelativeComplement(set2, set1));
