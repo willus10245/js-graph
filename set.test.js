@@ -1,7 +1,6 @@
-import {
-  Set,
-  intersection,
-} from './set';
+import { Set, multisetFunctions } from './set';
+
+const { union, intersection } = multisetFunctions();
 
 describe('the set function', () => {
   const set = Set();
@@ -50,6 +49,11 @@ describe('multiset functions', () => {
   set2.add('x');
   set2.add('y');
   set2.add('z');
+
+  it('union functions', () => {
+    expect(union(set1.values, set2.values))
+      .toEqual([1, 2, 3, 'a', 'b', 'c', 'x', 'y', 'z']);
+  });
 
   it('intersection functions', () => {
     expect(intersection(set1.values, set2.values)).toEqual([1, 2, 3]);
