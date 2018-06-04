@@ -15,4 +15,9 @@ describe('the set function', () => {
     };
     expect(addDuplicate).toThrow('that value is already in the set!');
   });
+
+  it('checks if a given element is in the set', () => {
+    expect(set.has('fish')).toBe(true);
+    expect(set.has(false)).toBe(false);
+  });
 });

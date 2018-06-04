@@ -9,8 +9,11 @@ export const Set = () => {
     }
   };
 
+  const has = value => values.includes(value);
+
   return {
     add,
+    has,
   };
 };
 
