@@ -20,4 +20,13 @@ describe('the set function', () => {
     expect(set.has('fish')).toBe(true);
     expect(set.has(false)).toBe(false);
   });
+
+  it('removes elements from the set', () => {
+    expect(set.remove('fish')).toEqual([7, { one: 1 }]);
+
+    const removeNonexistant = () => {
+      set.remove(false);
+    };
+    expect(removeNonexistant).toThrow('that value is not in the set!');
+  });
 });
