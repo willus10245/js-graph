@@ -13,13 +13,7 @@ describe('the set function', () => {
     expect(set.add(7)).toEqual([7]);
     expect(set.add('fish')).toEqual([7, 'fish']);
     expect(set.add({ one: 1 })).toEqual([7, 'fish', { one: 1 }]);
-  });
-
-  it('doesn\'t add duplicate elements to the set', () => {
-    const addDuplicate = () => {
-      set.add(7);
-    };
-    expect(addDuplicate).toThrow('that value is already in the set!');
+    expect(set.add(7)).toEqual([7, 'fish', { one: 1 }]);
   });
 
   it('checks if a given element is in the set', () => {
@@ -29,11 +23,7 @@ describe('the set function', () => {
 
   it('removes elements from the set', () => {
     expect(set.remove('fish')).toEqual([7, { one: 1 }]);
-
-    const removeNonexistant = () => {
-      set.remove(false);
-    };
-    expect(removeNonexistant).toThrow('that value is not in the set!');
+    expect(set.remove(false)).toEqual([7, { one: 1 }]);
   });
 });
 

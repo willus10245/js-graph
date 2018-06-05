@@ -2,23 +2,19 @@ export const Set = () => {
   const values = [];
 
   const add = (value) => {
-    if (values.includes(value)) {
-      throw new Error('that value is already in the set!');
-    } else {
+    if (!values.includes(value)) {
       values.push(value);
-      return values;
     }
+    return values;
   };
 
   const has = value => values.includes(value);
 
   const remove = (value) => {
-    if (!values.includes(value)) {
-      throw new Error('that value is not in the set!');
-    } else {
+    if (values.includes(value)) {
       values.splice(values.indexOf(value), 1);
-      return values;
     }
+    return values;
   };
 
   return {
@@ -30,7 +26,7 @@ export const Set = () => {
 };
 
 export const findUnion = (set1, set2) => {
-  const unionSet = set1.reduce((acc, element) => acc.concat(element), []);
+  const unionSet = [...set1];
   set2.forEach((element) => {
     if (!unionSet.includes(element)) {
       unionSet.push(element);
